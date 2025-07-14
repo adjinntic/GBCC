@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDBAR CUSTOM CLUB: FEW OF FEW. BUILT FOR LEGENDS.</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --gold-primary: #DAA520;
+            --gold-light: #FFD700;
+            --gold-dark: #B8860B;
+            --black-primary: #0a0a0a;
+            --black-secondary: #141414;
+            --white: #ffffff;
+            --white-soft: #f8f8f8;
+            --grid-gold: rgba(218, 165, 32, 0.15);
+            --glass-bg: rgba(20, 20, 20, 0.7);
+            --glass-border: rgba(218, 165, 32, 0.3);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--black-primary);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Gold Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--black-primary);
+            background-image: 
+                linear-gradient(rgba(218, 165, 32, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(218, 165, 32, 0.4) 1px, transparent 1px);
+            background-size: 25px 25px;
+            transform: rotate(45deg);
+            transform-origin: center;
+            mask: radial-gradient(circle at center, rgba(0,0,0,1) 10%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.05) 70%, rgba(0,0,0,0) 85%);
+            -webkit-mask: radial-gradient(circle at center, rgba(0,0,0,1) 10%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.05) 70%, rgba(0,0,0,0) 85%);
+            z-index: -1;
+            animation: shimmer 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { 
+                opacity: 0;
+                background-image: 
+                    linear-gradient(rgba(218, 165, 32, 0.4) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(218, 165, 32, 0.4) 1px, transparent 1px);
+            }
+            50% { 
+                opacity: 0.5;
+                background-image: 
+                    linear-gradient(rgba(255, 215, 0, 0.6) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 215, 0, 0.6) 1px, transparent 1px);
+            }
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* Glass Card Base */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .glass-card:hover::before {
+            left: 100%;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-primary);
+            box-shadow: 
+                0 12px 48px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(218, 165, 32, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+        
+        .fire-emoji {
+            font-size: 3rem;
+            animation: flicker 2s ease-in-out infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(218, 165, 32, 0.3);
+            margin: 1rem 0;
+            letter-spacing: -2px;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--white-soft);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+        
+        /* Pitch Section */
+        .pitch-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--gold-light);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+        
+        .pitch-description {
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--white-soft);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        /* Made For Section */
+        .made-for-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .made-for-item {
+            background: rgba(218, 165, 32, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .made-for-item:hover {
+            background: rgba(218, 165, 32, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .made-for-item .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        /* Benefits List */
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold-primary);
+        }
+        
+        .benefit-item .emoji {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        /* Package Details */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .package-item {
+            background: rgba(218, 165, 32, 0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            position: relative;
+        }
+        
+        .package-item h3 {
+            color: var(--gold-primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .price-highlight {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            text-align: center;
+            margin: 2rem 0;
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0.4);
+        }
+        
+        /* Form Section */
+        .form-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .form-field {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-field h4 {
+            color: var(--gold-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-field p {
+            color: var(--white-soft);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary), var(--gold-light));
+            color: var(--black-primary);
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(218, 165, 32, 0.4);
+        }
+        
+        /* Timeline Badge */
+        .timeline-badge {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .glass-card {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-header {
+                font-size: 1.8rem;
+            }
+            
+            .pitch-quote {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Scroll Animation */
+        .glass-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .glass-card:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+        
+        .glass-card:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="fire-emoji">🔥</div>
+            <h1 class="main-title">GOLDBAR CUSTOM CLUB</h1>
+            <p class="subtitle">FEW OF FEW. BUILT FOR LEGENDS.</p>
+            <p class="subtitle" style="font-size: 1.1rem; margin-top: -1rem;">Bespoke Luxury Capsule Jackets for Organizations, Clubs, Communities, and Causes</p>
+        </header>
+
+        <!-- Pitch Section -->
+        <section class="glass-card">
+            <h2 class="section-header">✨ Our Vision</h2>
+            <div class="pitch-quote">"Wearable Monuments. Designed by Humans. Made for Icons."</div>
+            <p class="pitch-description">
+                Welcome to the GoldBar Custom Club — where cultural milestones meet timeless fashion. 
+                We create custom Luxury Streetwear Capsule Jackets to elevate your brand, celebrate legends, and unify communities.
+            </p>
+        </section>
+
+        <!-- Made For Section -->
+        <section class="glass-card">
+            <h2 class="section-header">🔑 Made For</h2>
+            <div class="made-for-grid">
+                <div class="made-for-item">
+                    <span class="emoji">🏆</span>
+                    <strong>Professional Teams</strong>
+                </div>
+                <div class="made-for-item">
+                    <span class="emoji">🏢</span>
+                    <strong>Corporations & Startups</strong>
+                </div>
+                <div class="made-for-item">
+                    <span class="emoji">🎵</span>
+                    <strong>Music Artists</strong>
+                </div>
+                <div class="made-for-item">
+                    <span class="emoji">⭐</span>
+                    <strong>Influencers & Celebrities</strong>
+                </div>
+                <div class="made-for-item">
+                    <span class="emoji">🌍</span>
+                    <strong>Cities, Nations & Cultures</strong>
+                </div>
+                <div class="made-for-item">
+                    <span class="emoji">❤️</span>
+                    <strong>Nonprofits & Movements</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Custom Capsules -->
+        <section class="glass-card">
+            <h2 class="section-header">🔥 Why Custom Capsules?</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="emoji">🎖️</span>
+                    <span>Commemorate Milestones</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">👑</span>
+                    <span>Celebrate Cultural Icons</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">🤝</span>
+                    <span>Cultivate Camaraderie</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">🚀</span>
+                    <span>Elevate Organizational Culture</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="emoji">💎</span>
+                    <span>Create Collectible Artifacts</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Package Details -->
+        <section class="glass-card">
+            <h2 class="section-header">👕 What You Get</h2>
+            <div class="price-highlight">$100</div>
+            <p style="text-align: center; color: var(--white-soft); margin-bottom: 2rem;">Prototype Package</p>
+            
+            <div class="package-grid">
+                <div class="package-item">
+                    <h3>🎨 Custom Design</h3>
+                    <p>One custom mockup of your Capsule Jacket design with placement of logos, mural lining, and patchwork</p>
+                </div>
+                <div class="package-item">
+                    <h3>📋 Full Presentation</h3>
+                    <p>Complete concept presentation PDF with professional-grade visuals and specifications</p>
+                </div>
+                <div class="package-item">
+                    <h3>💰 Production Quote</h3>
+                    <p>Estimated timeline + pricing structure for full production run</p>
+                </div>
+                <div class="package-item">
+                    <h3>🔄 Revision Round</h3>
+                    <p>One complete revision round included to perfect your vision</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <span class="timeline-badge">Timeline: 5-7 Business Days</span>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="glass-card">
+            <h2 class="section-header">📝 Step 1: Submit Your Info</h2>
+            <div class="form-fields">
+                <div class="form-field">
+                    <h4>Organization Details</h4>
+                    <p>Organization Name, Website/Socials, Contact Person (Name + Email)</p>
+                </div>
+                <div class="form-field">
+                    <h4>Brand Assets</h4>
+                    <p>Upload Brand Assets or Link to Style Guide</p>
+                </div>
+                <div class="form-field">
+                    <h4>Team Size</h4>
+                    <p>Number of Members (for sizing & production estimate)</p>
+                </div>
+                <div class="form-field">
+                    <h4>Affiliation</h4>
+                    <p>Division/League Affiliation (if applicable)</p>
+                </div>
+                <div class="form-field">
+                    <h4>Color Palette</h4>
+                    <p>Primary Colors (2) + Alternate Colors (2)</p>
+                </div>
+                <div class="form-field">
+                    <h4>Creative Vision</h4>
+                    <p>Special Requests / Vision / Inspiration</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="glass-card">
+            <h2 class="section-header">💳 Step 2: Design Phase Payment</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: var(--white-soft);">
+                One-time $100 non-refundable fee<br>
+                <span style="font-size: 1rem; opacity: 0.8;">(Includes intake review, custom mockup, and quote)</span>
+            </p>
+        </section>
+
+        <!-- Design Inputs -->
+        <section class="glass-card">
+            <h2 class="section-header">📂 Design Inputs Needed</h2>
+            <div class="package-grid">
+                <div class="package-item">
+                    <h3>🎯 Logo Placement</h3>
+                    <p><strong>Jumbo back patch:</strong> Primary logo<br>
+                    <strong>Chest placement:</strong> Secondary logo<br>
+                    <strong>Sleeve patch:</strong> Tertiary logo</p>
+                </div>
+                <div class="package-item">
+                    <h3>🎨 Artwork & Colors</h3>
+                    <p><strong>Hero Image:</strong> Inner lining mural artwork<br>
+                    <strong>Color Palette:</strong> 2 primaries, 2 accents<br>
+                    <strong>League/Division Icons:</strong> Optional</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables -->
+        <section class="glass-card">
+            <h2 class="section-header">📦 Deliverables Recap</h2>
+            <div style="text-align: center;">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--white-soft);">You will receive:</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="emoji">🖼️</span>
+                        <span>High-quality digital Capsule Jacket mockup</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="emoji">📋</span>
+                        <span>Creative deck with patch placement & composition</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="emoji">💰</span>
+                        <span>Production quote & timeline</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="section-header">🔗 Ready to Begin?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2rem; color: var(--white-soft);">
+                Ready to turn your brand into a wearable monument?<br>
+                Join the Custom Club and start your GoldBar Capsule today.
+            </p>
+            <a href="#" class="cta-button">Start My Design →</a>
+        </section>
+
+        <!-- Optional Add-On -->
+        <section class="glass-card" style="margin-bottom: 4rem;">
+            <h2 class="section-header">📁 Coming Soon</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: var(--white-soft);">
+                <strong>Lookbook Gallery</strong> featuring past capsules:<br>
+                KC Current • St. Louis City SC • Karlie Kloss • Cedric the Entertainer
+            </p>
+        </section>
+    </div>
+</body>
+</html>
